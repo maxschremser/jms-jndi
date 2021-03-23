@@ -1,0 +1,31 @@
+version: "3.0"
+services:
+  ibmmq-init:
+    image: ibmcom/mq:9.1.5.0-r2
+    env_file:
+      - .mq.env
+    entrypoint:
+      - /bin/sh
+      - -c
+      - |
+        /opt/mqm/java/bin/JMSAdmin -cfg /opt/mqm/java/JMSAdmin.config < /opt/mqm/java/intsetup.scp
+
+    volumes:
+      - "../../../jndi:/jndi"
+      - "../../../maven:/opt/mqm/java/lib"
+      - "./JMSAdmin.config:/opt/mqm/java/JMSAdmin.config"
+      - "./intsetup.scp:/opt/mqm/java/intsetup.scp"
+    ports:
+      - "1414:1414"
+
+  ibmmq:
+    image: ibmcom/mq:9.1.5.0-r2
+    env_file:
+      - .mq.env
+    volumes:
+      - "./etc/mqm/20-config.mqsc:/etc/mqm/20-config.mqsc"
+      - "../../../jndi:/jndi"
+      - "./JMSAdmin.config:/opt/mqm/java/JMSAdmin.config"
+      - "./intsetup.scp:/opt/mqm/java/intsetup.scp"
+    ports:
+      - "1414:1414"

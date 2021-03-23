@@ -1,0 +1,1 @@
+def qcf(QueueConnectionFactory) qmgr(SSNC) transport(CLIENT) host(localhost) channel(DEV.APP.SVRCONN) port(1414)

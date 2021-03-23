@@ -1,0 +1,2 @@
+def ql(DEV.REQUEST.QUEUE)
+def ql(DEV.RESPONSE.QUEUE)

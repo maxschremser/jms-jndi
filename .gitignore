@@ -1,0 +1,7 @@
+.gradle
+.idea
+build
+jndi/.bindings
+maven
+message.txt
+message_received.txt
