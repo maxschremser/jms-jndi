@@ -12,11 +12,8 @@ services:
 
     volumes:
       - "../../../jndi:/jndi"
-      - "../../../maven:/opt/mqm/java/lib"
       - "./JMSAdmin.config:/opt/mqm/java/JMSAdmin.config"
       - "./intsetup.scp:/opt/mqm/java/intsetup.scp"
-    ports:
-      - "1414:1414"
 
   ibmmq:
     image: ibmcom/mq:9.1.5.0-r2

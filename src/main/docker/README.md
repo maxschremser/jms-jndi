@@ -26,4 +26,14 @@ docker-compose up -d ibmmq
 ```
 
 ## Start JmsClient
+```bash
+./gradlew run
+```
+
+## Copy libraries locally
+```bash
+docker ps -a
+docker cp ea879463ba64:/opt/mqm/java/lib/ ../../../maven/
+```
+
 
